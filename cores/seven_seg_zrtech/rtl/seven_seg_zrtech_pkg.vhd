@@ -6,8 +6,8 @@ use seven_seg.seven_seg_pkg.all;
 
 package seven_seg_zrtech_pkg is
     
-    constant SEVEN_SEG_WIDTH : natural := 4;
-    subtype  SEVEN_SEG_RANGE is natural range SEVEN_SEG_WIDTH-1 downto 0;
+    constant SEVEN_SEG_DISPLAY_SIZE : natural := 4;
+    subtype  SEVEN_SEG_RANGE is natural range SEVEN_SEG_DISPLAY_SIZE-1 downto 0;
 
     constant SEVEN_SEG_DEC_MAP : seven_seg_dec_map_t := (
         "1111110", -- 0

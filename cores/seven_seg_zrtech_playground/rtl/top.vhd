@@ -9,6 +9,8 @@ use seven_seg_zrtech.seven_seg_zrtech_pkg.all;
 
 entity top is
     port (
+        rstn    : in  std_ulogic;
+        clk     : in  std_ulogic;
         ds_a    : out std_ulogic;
         ds_b    : out std_ulogic;
         ds_c    : out std_ulogic;
@@ -23,6 +25,8 @@ entity top is
         ds_en4  : out std_ulogic);
 end;
 architecture spec of top is
+    signal digits        : hex_digit_array_t(1 to 4) := (1, 2, 3, 4);
+    
     signal to_board      : seven_seg_interface_t;
     signal letter        : seven_seg_t := SEVEN_SEG_HEX_MAP(0);
     signal active        : std_ulogic_vector(SEVEN_SEG_RANGE) := (others => '0');
@@ -42,8 +46,6 @@ begin
     ds_en3  <= to_board.ds_en3;
     ds_en4  <= to_board.ds_en4;
 
-    letter  <= SEVEN_SEG_HEX_MAP(15);
-    active  <= (others => '1');
     decimal_point <= '0';
 
     seven_seg_port : seven_seg_interface
@@ -53,5 +55,18 @@ begin
             decimal_point => decimal_point,
             active        => active
         );
+    
+
+    display : seven_seg_hex_display
+    generic map (
+        SEVEN_SEG_DISPLAY_SIZE => SEVEN_SEG_DISPLAY_SIZE,
+        SEVEN_SEG_HEX_MAP      => SEVEN_SEG_HEX_MAP
+    )
+    port map (
+        clk    => clk,
+        digits => digits,
+        letter => letter,
+        active => active);
+
 
 end;
