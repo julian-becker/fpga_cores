@@ -1,0 +1,4 @@
+{
+    "vhdl.formatter.case.keyword": "LowerCase",
+    "editor.tabSize": 4
+}

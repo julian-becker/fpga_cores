@@ -1,0 +1,28 @@
+CAPI=2:
+name: jb:common:basetypes:0.1
+description: A package containing frequently reused types such as byte, byte_array
+filesets:
+  core:
+    files:
+      - rtl/basetypes_pkg.vhd
+      - rtl/basetypes_pkg_body.vhd
+    file_type: vhdlSource-2008
+    logical_name: basetypes
+  core_tb:
+    files:
+      - tb/basetypes_tb.vhd
+    file_type: vhdlSource-2008
+
+targets:
+  default:
+    filesets:
+      - core
+  sim:
+    filesets:
+      - core
+      - core_tb
+    toplevel: basetypes_tb
+    default_tool: vunit
+    tools:
+      vunit:
+        vunit_options: []
