@@ -25,7 +25,7 @@ entity top is
         ds_en4  : out std_ulogic);
 end;
 architecture spec of top is
-    signal digits        : hex_digit_array_t(1 to 4) := (1, 2, 3, 4);
+    signal digits        : hex_digit_array_t(1 to 4) := (12, 13, 14, 15);
     
     signal to_board      : seven_seg_interface_t;
     signal letter        : seven_seg_t := SEVEN_SEG_HEX_MAP(0);

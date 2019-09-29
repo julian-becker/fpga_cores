@@ -34,9 +34,9 @@ package seven_seg_zrtech_pkg is
         SEVEN_SEG_DEC_MAP(8),
         SEVEN_SEG_DEC_MAP(9),
         "1110111", -- 0xA
-        "1011110", -- 0xB
-        "0001111", -- 0xC
-        "1111100", -- 0xD
+        "0011111", -- 0xB
+        "1001110", -- 0xC
+        "0111101", -- 0xD
         "1001111", -- 0xE
         "1000111"  -- 0xF
     );

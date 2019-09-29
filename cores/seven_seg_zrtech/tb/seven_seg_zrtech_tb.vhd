@@ -31,9 +31,9 @@ begin
                 check_equal(SEVEN_SEG_DEC_MAP(8),  seven_seg_t'("1111111"));
                 check_equal(SEVEN_SEG_DEC_MAP(9),  seven_seg_t'("1111011"));
                 check_equal(SEVEN_SEG_HEX_MAP(10), seven_seg_t'("1110111"));
-                check_equal(SEVEN_SEG_HEX_MAP(11), seven_seg_t'("1011110"));
-                check_equal(SEVEN_SEG_HEX_MAP(12), seven_seg_t'("0001111"));
-                check_equal(SEVEN_SEG_HEX_MAP(13), seven_seg_t'("1111100"));
+                check_equal(SEVEN_SEG_HEX_MAP(11), seven_seg_t'("0011111"));
+                check_equal(SEVEN_SEG_HEX_MAP(12), seven_seg_t'("1001110"));
+                check_equal(SEVEN_SEG_HEX_MAP(13), seven_seg_t'("0111101"));
                 check_equal(SEVEN_SEG_HEX_MAP(14), seven_seg_t'("1001111"));
                 check_equal(SEVEN_SEG_HEX_MAP(15), seven_seg_t'("1000111"));
                 wait for 1 ns;
