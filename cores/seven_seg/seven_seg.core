@@ -1,0 +1,30 @@
+CAPI=2:
+name: jb:interfaces:seven_seg:0.1
+description: Useful components for interfacing 7-segment displays
+
+filesets:
+  rtl:
+    files:
+      - rtl/seven_seg_pkg.vhd
+    file_type: vhdlSource-2008
+    logical_name: seven_seg
+
+  tb:
+    files:
+      - tb/seven_seg_tb.vhd
+    file_type: vhdlSource-2008
+
+targets:
+  default:
+    filesets:
+        - rtl
+
+  sim:
+    filesets:
+      - rtl
+      - tb
+    toplevel: tb
+    default_tool: vunit
+    tools:
+      vunit:
+        vunit_options: []

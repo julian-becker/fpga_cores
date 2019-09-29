@@ -1,0 +1,37 @@
+CAPI=2:
+name: jb:interfaces:seven_seg_zrtech:0.1
+description: 7-segment display layout for ZRTech V2.00 board
+
+filesets:
+  rtl:
+    files:
+      - rtl/seven_seg_zrtech_pkg.vhd
+      - rtl/seven_seg_interface.vhd
+    file_type: vhdlSource-2008
+    logical_name: seven_seg_zrtech
+    depend:
+        - jb:interfaces:seven_seg
+  config:
+    files:
+        - pinmap.tcl : {file_type : tclSource}
+  tb:
+    files:
+      - tb/seven_seg_zrtech_tb.vhd
+      - tb/seven_seg_interface_tb.vhd
+    file_type: vhdlSource-2008
+
+targets:
+  default:
+    filesets:
+      - rtl
+      - config
+
+  sim:
+    filesets:
+      - rtl
+      - tb
+    toplevel: tb
+    default_tool: vunit
+    tools:
+      vunit:
+        vunit_options: []
