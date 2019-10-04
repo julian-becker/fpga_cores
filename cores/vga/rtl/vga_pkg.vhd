@@ -16,6 +16,25 @@ package vga_pkg is
         v_sync : vga_sync_params_t;
     end record;
 
+    type vga_interface_t is record
+        h_sync : std_ulogic;
+        v_sync : std_ulogic;
+    end record;
+
+    subtype vga_channel_color_t is natural range 0 to 255;
+
+    type vga_color_interface_t is record
+        R : vga_channel_color_t;
+        G : vga_channel_color_t;
+        B : vga_channel_color_t;
+    end record;
+
+    type vga_img_select_t is record
+        row    : integer;
+        column : integer;
+        enable : std_ulogic;
+    end record;
+
     -- requires pixel clock: 25.175Mhz
     constant VGA_PARAMS_640x480 : vga_params_t := (
         h_sync => (
@@ -52,11 +71,10 @@ package vga_pkg is
             MODE : vga_params_t
         );
         port (
-            clk    : in  std_ulogic;
-            reset  : in  std_ulogic;
-            h_sync : out std_ulogic;
-            v_sync : out std_ulogic;
-            r,g,b  : out std_ulogic
+            clk        : in  std_ulogic;
+            reset      : in  std_ulogic;
+            img_select : out vga_img_select_t;
+            to_board   : out vga_interface_t
         );
     end component;
 

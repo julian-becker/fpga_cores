@@ -6,6 +6,7 @@ filesets:
   zrtech:
     files:
       - common/application.vhd : {file_type: vhdlSource-2008}
+      - common/vga_img_src.vhd : {file_type: vhdlSource-2008}
       - zrtech_v2/top.vhd      : {file_type: vhdlSource-2008}
       - zrtech_v2/plls_pkg.vhd : {file_type: vhdlSource-2008}
       - zrtech_v2/vga_plls.vhd : {file_type: vhdlSource-2008}
@@ -18,7 +19,10 @@ filesets:
   de1_soc:
     files:
       - common/application.vhd : {file_type: vhdlSource-2008}
+      - common/vga_img_src.vhd : {file_type: vhdlSource-2008}
       - de1_soc/top.vhd        : {file_type: vhdlSource-2008}
+      - de1_soc/plls_pkg.vhd   : {file_type: vhdlSource-2008}
+      - de1_soc/vga_plls.vhd   : {file_type: vhdlSource-2008}
       - de1_soc/pinmap.tcl     : {file_type: tclSource}
     depend:
         - jb:interfaces:seven_seg_types
