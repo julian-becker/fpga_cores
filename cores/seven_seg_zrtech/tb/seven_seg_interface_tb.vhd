@@ -14,9 +14,8 @@ entity seven_seg_interface_tb is
     generic (runner_cfg : string);
 end;
 architecture spec of seven_seg_interface_tb is
-    signal to_board : seven_seg_interface_t := SEVEN_SEG_INTERFACE_CLEAR;
-
-    signal letter        : seven_seg_t := SEVEN_SEG_HEX_MAP(0);
+    signal to_board      : seven_seg_interface_t := SEVEN_SEG_INTERFACE_CLEAR;
+    signal letter        : seven_seg_t := SEVEN_SEG_MAP(0);
     signal active        : std_ulogic_vector(SEVEN_SEG_RANGE) := (others => '0');
     signal decimal_point : std_ulogic := '0';
 begin
@@ -31,7 +30,7 @@ begin
 
 
     main : process
-        constant TEST_DIGIT : seven_seg_t := SEVEN_SEG_HEX_MAP(0);
+        constant TEST_DIGIT : seven_seg_t := SEVEN_SEG_MAP(0);
     begin
         test_runner_setup(runner, runner_cfg);
         while test_suite loop

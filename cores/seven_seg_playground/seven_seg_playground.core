@@ -3,19 +3,21 @@ name: jb:interfaces:seven_seg_playground:0.1
 description: Toplevel entity instantiating the 7-segment interface
 
 filesets:
-  rtl_zrtech:
+  zrtech:
     files:
-      - rtl/zrtech_v2/top.vhd : {file_type : vhdlSource-2008}
+      - zrtech_v2/top.vhd    : {file_type: vhdlSource-2008}
+      - zrtech_v2/pinmap.tcl : {file_type: tclSource}
     depend:
         - jb:interfaces:seven_seg
         - jb:interfaces:seven_seg_zrtech
 
-  rtl_de1_soc:
+  de1_soc:
     files:
-      - rtl/de1_soc/top.vhd : {file_type : vhdlSource-2008}
+      - de1_soc/top.vhd    : {file_type: vhdlSource-2008}
+      - de1_soc/pinmap.tcl : {file_type: tclSource}
     depend:
         - jb:interfaces:seven_seg
-        - jb:interfaces:seven_seg_zrtech
+        - jb:interfaces:seven_seg_de1_soc
 
 targets:
   default:
@@ -23,7 +25,7 @@ targets:
 
   zrtech_v2:
     default_tool : quartus
-    filesets : [rtl_zrtech]
+    filesets : [zrtech]
     tools:
       quartus:
         family : Cyclone IV E
@@ -32,9 +34,10 @@ targets:
 
   de1_soc:
     default_tool : quartus
-    filesets : [rtl_de1_soc]
+    filesets : [de1_soc]
     tools:
       quartus:
-        family : Cyclone IV E
-        device : EP4CE6E22C8
+        family : Cyclone V
+        device : 5CSEMA5F31C6
+        board_device_index : 2
     toplevel: top

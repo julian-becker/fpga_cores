@@ -10,6 +10,12 @@ filesets:
     file_type: vhdlSource-2008
     logical_name: seven_seg
 
+  tb_support:
+    files:
+      - tb/seven_seg_hw_pkg.vhd
+    file_type: vhdlSource-2008
+    logical_name: seven_seg_hw
+
   tb:
     files:
       - tb/seven_seg_tb.vhd
@@ -23,6 +29,7 @@ targets:
   sim:
     filesets:
       - rtl
+      - tb_support
       - tb
     toplevel: tb
     default_tool: vunit

@@ -25,12 +25,8 @@ entity top is
         ds_en4  : out std_ulogic);
 end;
 architecture spec of top is
-    signal digits        : hex_digit_array_t(1 to 4) := (12, 13, 14, 15);
-    
-    signal to_board      : seven_seg_interface_t;
-    signal letter        : seven_seg_t := SEVEN_SEG_HEX_MAP(0);
-    signal active        : std_ulogic_vector(SEVEN_SEG_RANGE) := (others => '0');
-    signal decimal_point : std_ulogic := '0';
+    signal digits   : hex_digit_array_t(1 to 4) := (12, 13, 14, 15);
+    signal to_board : seven_seg_interface_t;
 begin
 
     ds_a    <= to_board.ds_a;
@@ -49,12 +45,11 @@ begin
     display : seven_seg_display
     generic map (
         SEVEN_SEG_DISPLAY_SIZE => SEVEN_SEG_DISPLAY_SIZE,
-        SEVEN_SEG_HEX_MAP      => SEVEN_SEG_HEX_MAP
+        SEVEN_SEG_MAP          => SEVEN_SEG_MAP
     )
     port map (
-        clk    => clk,
-        digits => digits,
+        clk      => clk,
+        digits   => digits,
         to_board => to_board);
-
 
 end;

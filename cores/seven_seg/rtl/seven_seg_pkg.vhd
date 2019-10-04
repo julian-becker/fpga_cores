@@ -25,7 +25,7 @@ package seven_seg_pkg is
     component seven_seg_display is
         generic (
             SEVEN_SEG_DISPLAY_SIZE : natural;
-            SEVEN_SEG_HEX_MAP : seven_seg_hex_map_t
+            SEVEN_SEG_MAP : seven_seg_map_t
         );
         port (
             clk      : in  std_ulogic;
