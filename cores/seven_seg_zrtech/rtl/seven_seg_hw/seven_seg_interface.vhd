@@ -1,11 +1,8 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-library seven_seg;
-use seven_seg.seven_seg_pkg.all;
-
-library seven_seg_zrtech;
-use seven_seg_zrtech.seven_seg_zrtech_pkg.all;
+library seven_seg_hw;
+use seven_seg_hw.seven_seg_hw_pkg.all;
 
 entity seven_seg_interface is
     port (

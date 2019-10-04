@@ -6,7 +6,6 @@ filesets:
   rtl:
     files:
       - rtl/seven_seg_pkg.vhd
-      - rtl/seven_seg_hex_display.vhd
       - rtl/seven_seg_digit_selector.vhd
     file_type: vhdlSource-2008
     logical_name: seven_seg

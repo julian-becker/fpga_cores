@@ -5,18 +5,28 @@ description: 7-segment display layout for ZRTech V2.00 board
 filesets:
   rtl:
     files:
-      - rtl/seven_seg_zrtech_pkg.vhd
-      - rtl/seven_seg_interface.vhd
+      - rtl/seven_seg/seven_seg_display.vhd
     file_type: vhdlSource-2008
-    logical_name: seven_seg_zrtech
+    logical_name: seven_seg
     depend:
         - jb:interfaces:seven_seg
+
+  rtl_hw:
+    files:
+      - rtl/seven_seg_hw/seven_seg_interface.vhd
+      - rtl/seven_seg_hw/seven_seg_hw_pkg.vhd
+    file_type: vhdlSource-2008
+    logical_name: seven_seg_hw
+    depend:
+      - jb:interfaces:seven_seg
+
   config:
     files:
-        - pinmap.tcl : {file_type : tclSource}
+      - pinmap.tcl : {file_type : tclSource}
+
   tb:
     files:
-      - tb/seven_seg_zrtech_tb.vhd
+      - tb/seven_seg_hw_tb.vhd
       - tb/seven_seg_interface_tb.vhd
     file_type: vhdlSource-2008
 
@@ -24,11 +34,13 @@ targets:
   default:
     filesets:
       - rtl
+      - rtl_hw
       - config
 
   sim:
     filesets:
       - rtl
+      - rtl_hw
       - tb
     toplevel: tb
     default_tool: vunit

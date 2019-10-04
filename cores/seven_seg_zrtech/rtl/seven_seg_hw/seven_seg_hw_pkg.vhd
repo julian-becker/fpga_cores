@@ -1,10 +1,14 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-library seven_seg;
-use seven_seg.seven_seg_pkg.all;
+package seven_seg_hw_pkg is
+    subtype seven_seg_t is std_ulogic_vector(6 downto 0);
 
-package seven_seg_zrtech_pkg is
+    -- maps a hexadecimal number (index) to the 7-segment display layout
+    type seven_seg_hex_map_t is array (0 to 15) of seven_seg_t;
+
+    -- maps a decimal number (index) to the 7-segment display layout
+    type seven_seg_dec_map_t is array (0 to 9) of seven_seg_t;
     
     constant SEVEN_SEG_DISPLAY_SIZE : natural := 4;
     subtype  SEVEN_SEG_RANGE is natural range SEVEN_SEG_DISPLAY_SIZE-1 downto 0;

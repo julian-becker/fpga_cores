@@ -1,0 +1,40 @@
+CAPI=2:
+name: jb:interfaces:seven_seg_playground:0.1
+description: Toplevel entity instantiating the 7-segment interface
+
+filesets:
+  rtl_zrtech:
+    files:
+      - rtl/zrtech_v2/top.vhd : {file_type : vhdlSource-2008}
+    depend:
+        - jb:interfaces:seven_seg
+        - jb:interfaces:seven_seg_zrtech
+
+  rtl_de1_soc:
+    files:
+      - rtl/de1_soc/top.vhd : {file_type : vhdlSource-2008}
+    depend:
+        - jb:interfaces:seven_seg
+        - jb:interfaces:seven_seg_zrtech
+
+targets:
+  default:
+    filesets: []
+
+  zrtech_v2:
+    default_tool : quartus
+    filesets : [rtl_zrtech]
+    tools:
+      quartus:
+        family : Cyclone IV E
+        device : EP4CE6E22C8
+    toplevel: top
+
+  de1_soc:
+    default_tool : quartus
+    filesets : [rtl_de1_soc]
+    tools:
+      quartus:
+        family : Cyclone IV E
+        device : EP4CE6E22C8
+    toplevel: top

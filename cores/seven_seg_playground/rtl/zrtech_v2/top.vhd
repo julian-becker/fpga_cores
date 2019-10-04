@@ -4,8 +4,8 @@ use ieee.std_logic_1164.all;
 library seven_seg;
 use seven_seg.seven_seg_pkg.all;
 
-library seven_seg_zrtech;
-use seven_seg_zrtech.seven_seg_zrtech_pkg.all;
+library seven_seg_hw;
+use seven_seg_hw.seven_seg_hw_pkg.all;
 
 entity top is
     port (
@@ -46,18 +46,7 @@ begin
     ds_en3  <= to_board.ds_en3;
     ds_en4  <= to_board.ds_en4;
 
-    decimal_point <= '0';
-
-    seven_seg_port : seven_seg_interface
-        port map (
-            to_board      => to_board,
-            letter        => letter,
-            decimal_point => decimal_point,
-            active        => active
-        );
-    
-
-    display : seven_seg_hex_display
+    display : seven_seg_display
     generic map (
         SEVEN_SEG_DISPLAY_SIZE => SEVEN_SEG_DISPLAY_SIZE,
         SEVEN_SEG_HEX_MAP      => SEVEN_SEG_HEX_MAP
@@ -65,8 +54,7 @@ begin
     port map (
         clk    => clk,
         digits => digits,
-        letter => letter,
-        active => active);
+        to_board => to_board);
 
 
 end;
