@@ -1,32 +1,32 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-package seven_seg_hw_pkg is
-    subtype seven_seg_t is std_ulogic_vector(6 downto 0);
+library seven_seg_types;
+use seven_seg_types.seven_seg_types.all;
 
-    -- maps a hexadecimal number (index) to the 7-segment display layout
-    type seven_seg_map_t is array (0 to 15) of seven_seg_t;
+package seven_seg_hw_pkg is
 
     constant SEVEN_SEG_DISPLAY_SIZE : natural := 4;
     subtype  SEVEN_SEG_RANGE is natural range SEVEN_SEG_DISPLAY_SIZE-1 downto 0;
 
     constant SEVEN_SEG_MAP : seven_seg_map_t := (
-        "1111110", -- 0
-        "0110000", -- 1
-        "1101101", -- 2
-        "1111001", -- 3
-        "0110011", -- 4
-        "1011011", -- 5
-        "1011111", -- 6
-        "1110000", -- 7
-        "1111111", -- 8
-        "1111011", -- 9
-        "1110111", -- 0xA
-        "0011111", -- 0xB
-        "1001110", -- 0xC
-        "0111101", -- 0xD
-        "1001111", -- 0xE
-        "1000111"  -- 0xF
+        ' ' => "0000000", -- 0
+        '0' => "1111110", -- 0
+        '1' => "0110000", -- 1
+        '2' => "1101101", -- 2
+        '3' => "1111001", -- 3
+        '4' => "0110011", -- 4
+        '5' => "1011011", -- 5
+        '6' => "1011111", -- 6
+        '7' => "1110000", -- 7
+        '8' => "1111111", -- 8
+        '9' => "1111011", -- 9
+        'A' => "1110111", -- 0xA
+        'B' => "0011111", -- 0xB
+        'C' => "1001110", -- 0xC
+        'D' => "0111101", -- 0xD
+        'E' => "1001111", -- 0xE
+        'F' => "1000111"  -- 0xF
     );
 
     type seven_seg_interface_t is record
@@ -65,6 +65,16 @@ package seven_seg_hw_pkg is
             letter        : in  seven_seg_t;
             active        : in  std_ulogic_vector(SEVEN_SEG_RANGE);
             decimal_point : in  std_ulogic
+        );
+    end component;
+
+    component seven_seg_digit_selector is
+        generic (
+            SEVEN_SEG_DISPLAY_SIZE : natural
+        );
+        port (
+            clk          : in std_ulogic;
+            digit_select : out natural range 0 to SEVEN_SEG_DISPLAY_SIZE-1
         );
     end component;
 

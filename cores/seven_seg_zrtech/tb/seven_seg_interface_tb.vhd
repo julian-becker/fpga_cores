@@ -1,8 +1,8 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-library seven_seg;
-use seven_seg.seven_seg_pkg.all;
+library seven_seg_types;
+use seven_seg_types.seven_seg_types.all;
 
 library seven_seg_hw;
 use seven_seg_hw.seven_seg_hw_pkg.all;
@@ -15,7 +15,7 @@ entity seven_seg_interface_tb is
 end;
 architecture spec of seven_seg_interface_tb is
     signal to_board      : seven_seg_interface_t := SEVEN_SEG_INTERFACE_CLEAR;
-    signal letter        : seven_seg_t := SEVEN_SEG_MAP(0);
+    signal letter        : seven_seg_t := SEVEN_SEG_MAP(' ');
     signal active        : std_ulogic_vector(SEVEN_SEG_RANGE) := (others => '0');
     signal decimal_point : std_ulogic := '0';
 begin
@@ -30,7 +30,7 @@ begin
 
 
     main : process
-        constant TEST_DIGIT : seven_seg_t := SEVEN_SEG_MAP(0);
+        constant TEST_DIGIT : seven_seg_t := SEVEN_SEG_MAP(' ');
     begin
         test_runner_setup(runner, runner_cfg);
         while test_suite loop

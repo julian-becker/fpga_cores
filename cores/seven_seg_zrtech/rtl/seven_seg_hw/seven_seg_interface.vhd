@@ -1,6 +1,9 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
+library seven_seg_types;
+use seven_seg_types.seven_seg_types.all;
+
 library seven_seg_hw;
 use seven_seg_hw.seven_seg_hw_pkg.all;
 

@@ -1,0 +1,15 @@
+CAPI=2:
+name: jb:interfaces:seven_seg_types:0.1
+description: Collection of types useful in the context of 7-segment displays
+
+filesets:
+  rtl:
+    files:
+      - rtl/seven_seg_types_pkg.vhd
+    file_type: vhdlSource-2008
+    logical_name: seven_seg_types
+
+targets:
+  default:
+    filesets:
+        - rtl

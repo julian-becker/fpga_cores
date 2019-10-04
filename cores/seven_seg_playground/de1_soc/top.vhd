@@ -2,10 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 library seven_seg;
-use seven_seg.seven_seg_pkg.all;
-
-library seven_seg_hw;
-use seven_seg_hw.seven_seg_hw_pkg.all;
+use seven_seg.seven_seg.all;
 
 entity top is
     port (
@@ -20,26 +17,20 @@ entity top is
     );
 end;
 architecture spec of top is
-    signal digits   : hex_digit_array_t(1 to 6) := (0, 1, 2, 3, 4, 5);
-    signal to_board : seven_seg_interface_t;
+    signal to_board_seven_seg : seven_seg_interface_t;
 begin
 
-    HEX0 <= to_board(0);
-    HEX1 <= to_board(1);
-    HEX2 <= to_board(2);
-    HEX3 <= to_board(3);
-    HEX4 <= to_board(4);
-    HEX5 <= to_board(5);
+    HEX0 <= to_board_seven_seg(0);
+    HEX1 <= to_board_seven_seg(1);
+    HEX2 <= to_board_seven_seg(2);
+    HEX3 <= to_board_seven_seg(3);
+    HEX4 <= to_board_seven_seg(4);
+    HEX5 <= to_board_seven_seg(5);
 
-    display : seven_seg_display
-    generic map (
-        SEVEN_SEG_DISPLAY_SIZE => SEVEN_SEG_DISPLAY_SIZE,
-        SEVEN_SEG_MAP          => SEVEN_SEG_MAP
-    )
-    port map (
-        clk      => CLOCK_50,
-        digits   => digits,
-        to_board => to_board);
+    application : entity work.application
+        port map (
+            clk                => CLOCK_50,
+            to_board_seven_seg => to_board_seven_seg);
 
 
 end;

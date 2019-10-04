@@ -5,18 +5,20 @@ description: Toplevel entity instantiating the 7-segment interface
 filesets:
   zrtech:
     files:
-      - zrtech_v2/top.vhd    : {file_type: vhdlSource-2008}
-      - zrtech_v2/pinmap.tcl : {file_type: tclSource}
+      - common/application.vhd : {file_type: vhdlSource-2008}
+      - zrtech_v2/top.vhd      : {file_type: vhdlSource-2008}
+      - zrtech_v2/pinmap.tcl   : {file_type: tclSource}
     depend:
-        - jb:interfaces:seven_seg
+        - jb:interfaces:seven_seg_types
         - jb:interfaces:seven_seg_zrtech
 
   de1_soc:
     files:
-      - de1_soc/top.vhd    : {file_type: vhdlSource-2008}
-      - de1_soc/pinmap.tcl : {file_type: tclSource}
+      - common/application.vhd : {file_type: vhdlSource-2008}
+      - de1_soc/top.vhd        : {file_type: vhdlSource-2008}
+      - de1_soc/pinmap.tcl     : {file_type: tclSource}
     depend:
-        - jb:interfaces:seven_seg
+        - jb:interfaces:seven_seg_types
         - jb:interfaces:seven_seg_de1_soc
 
 targets:
