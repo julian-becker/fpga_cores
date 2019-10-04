@@ -1,0 +1,21 @@
+CAPI=2:
+name: jb:interfaces:vga:0.1
+description: Useful components for interfacing VGA displays
+
+filesets:
+  rtl:
+    files:
+      - rtl/vga.vhd
+      - rtl/vga_pkg.vhd
+      - rtl/counter.vhd
+    file_type: vhdlSource-2008
+    logical_name: vga
+
+  tb:
+    files:
+    file_type: vhdlSource-2008
+
+targets:
+  default:
+    filesets:
+        - rtl

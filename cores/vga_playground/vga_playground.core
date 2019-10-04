@@ -1,0 +1,49 @@
+CAPI=2:
+name: jb:interfaces:vga_playground:0.1
+description: Toplevel entity instantiating the vga component
+
+filesets:
+  zrtech:
+    files:
+      - common/application.vhd : {file_type: vhdlSource-2008}
+      - zrtech_v2/top.vhd      : {file_type: vhdlSource-2008}
+      - zrtech_v2/plls_pkg.vhd : {file_type: vhdlSource-2008}
+      - zrtech_v2/vga_plls.vhd : {file_type: vhdlSource-2008}
+      - zrtech_v2/pinmap.tcl   : {file_type: tclSource}
+    depend:
+        - jb:interfaces:seven_seg_types
+        - jb:interfaces:seven_seg_zrtech
+        - jb:interfaces:vga
+
+  de1_soc:
+    files:
+      - common/application.vhd : {file_type: vhdlSource-2008}
+      - de1_soc/top.vhd        : {file_type: vhdlSource-2008}
+      - de1_soc/pinmap.tcl     : {file_type: tclSource}
+    depend:
+        - jb:interfaces:seven_seg_types
+        - jb:interfaces:seven_seg_de1_soc
+        - jb:interfaces:vga
+
+targets:
+  default:
+    filesets: []
+
+  zrtech_v2:
+    default_tool : quartus
+    filesets : [zrtech]
+    tools:
+      quartus:
+        family : Cyclone IV E
+        device : EP4CE6E22C8
+    toplevel: top
+
+  de1_soc:
+    default_tool : quartus
+    filesets : [de1_soc]
+    tools:
+      quartus:
+        family : Cyclone V
+        device : 5CSEMA5F31C6
+        board_device_index : 2
+    toplevel: top
