@@ -24,8 +24,8 @@ begin
     begin
         if img_select.enable = '1' and (img_select.column - 640/2) * (img_select.column - 640/2)
             + (img_select.row - 480/2) * (img_select.row - 480/2) < 100*100 then
-            color.R <= 0;
-            color.G <= 0;
+            color.R <= 128;
+            color.G <= 64;
             color.B <= 255;
         elsif img_select.enable = '1' and (img_select.column - 640/2) * (img_select.column - 640/2)
             + (img_select.row - 480/2) * (img_select.row - 480/2) < 240*240 then
