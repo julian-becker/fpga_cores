@@ -1,0 +1,16 @@
+CAPI=2:
+name: jb:generators:sbt:0.1
+
+filesets:
+  rtl: {}
+
+generators:
+  sbt_gen:
+    interpreter: python
+    command: src/run_sbt.py
+    description: Generator that executes sbt (e.g. for SpinalHDL or Chisel codegen)
+
+targets:
+    default:
+        filesets:
+            - rtl
