@@ -1,0 +1,37 @@
+CAPI=2:
+name: jb:playground:spinalhdl:0.1
+
+filesets:
+  rtl:
+    file_type: vhdlSource-2008
+    depend:
+      - jb:generators:sbt:0.1
+  
+  zrtech:
+    files:
+      - Top.vhd: {file_type: vhdlSource-2008}
+      - pinmap.tcl: {file_type: tclSource}
+
+targets:
+  sim:
+    filesets: [rtl]
+    default_tool: ghdl
+    generate: [sbt_spinalhdl_sim]
+    toplevel: Top
+
+  zrtech_v2:
+    filesets : [rtl, zrtech]
+    default_tool : quartus
+    generate: [sbt_spinalhdl_zrtech]
+    tools:
+      quartus:
+        family : Cyclone IV E
+        device : EP4CE6E22C8
+    toplevel: top
+
+generate:
+  sbt_spinalhdl_zrtech:
+    generator: sbt_gen
+    parameters:
+      command: runMain zrtech_v2.TopLevelVhdl
+
